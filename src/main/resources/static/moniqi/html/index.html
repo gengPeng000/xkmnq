@@ -1,28 +1,126 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html" xmlns:float="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
-<!--    关闭用户双击放大-->
+    <!--    关闭用户双击放大-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title style="text-align: center">侠客模拟器</title>
     <link rel="stylesheet" href="../css/index.css">
 </head>
 
 <body>
-<div class="choose">
-    <div style="width: 100px ; height: 100px; border: black" onclick="choose">一号位</div>
-    <div>
-        <div style="width: 100px ; height: 100px; margin-right: 100px;background-color: aqua;float: left"  onclick="choose" float:left>二号位</div>
-        <div style="width: 100px ; height: 100px;background-color: aqua;float: left" onclick="choose" >六号位</div>
+    <div>请在各位置上选择侠客：</div>
+    <div class="choose">
+        <div class="block block-a">
+            <div class="image" onclick="choose">一号位</div>
+            <div class="process">30%</div>
+            <div class="detail">
+                <span>LV1</span>
+                <span>初识</span>
+            </div>
+        </div>
+        <div class="block block-b">
+            <div class="image" onclick="choose">二号位</div>
+            <div class="process">30%</div>
+            <div class="detail right">
+                <span>LV1</span>
+                <span>初识</span>
+            </div>
+        </div>
+        <div class="block block-c">
+            <div class="image" onclick="choose">四号位</div>
+            <div class="process">30%</div>
+            <div class="detail">
+                <span>LV1</span>
+                <span>初识</span>
+            </div>
+        </div>
+        <div class="block block-d">
+            <div class="image" onclick="choose">三号位</div>
+            <div class="process">30%</div>
+            <div class="detail right">
+                <span>LV1</span>
+                <span>初识</span>
+            </div>
+        </div>
+        <div class="block block-e">
+            <div class="image" onclick="choose">五号位</div>
+            <div class="process">30%</div>
+            <div class="detail">
+                <span>LV1</span>
+                <span>初识</span>
+            </div>
+        </div>
+        <div class="block block-f">
+            <div class="image" onclick="choose">六号位</div>
+            <div class="process">30%</div>
+            <div class="detail">
+                <span>LV1</span>
+                <span>初识</span>
+            </div>
+        </div>
     </div>
-    <div></div>
-    <div></div>
-</div>
-<div class="shuxing">
+    <div class="result">
+        <div class="property">
+            <div class="title">
+                属性：
+            </div>
+            <div class="list">
+                <div class="item">
+                    <div class="item-title">气血：</div>
+                    <div class="item-value">8392</div>
+                </div>
+                <div class="item">
+                    <div class="item-title">攻击：</div>
+                    <div class="item-value">391</div>
+                </div>
+                <div class="item">
+                    <div class="item-title">命中：</div>
+                    <div class="item-value">239</div>
+                </div>
+                <div class="item">
+                    <div class="item-title">暴击：</div>
+                    <div class="item-value">192</div>
+                </div>
+                <div class="item">
+                    <div class="item-title">格挡：</div>
+                    <div class="item-value">203</div>
+                </div>
 
-</div>
+            </div>
+        </div>
+        <div>
+            <div class="buff">
+                <div class="title">
+                    侠缘加成：
+                </div>
+                <div class="list">
+                    <div class="item">
+                        <div>20%暴击</div>
+                    </div>
+                    <div class="item">
+                        <div>20%暴击</div>
+                    </div>
+                </div>
+            </div>
+            <div class="scores">
+                <div class="title">
+                    评分：
+                </div>
+                <div class="list">
+                    <div class="item">
+                        <div>5342</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<script src="../js/index.js"></script>
-<script src="../js/jquery-3.4.1.min.js"></script>
+
+
+    <script src="../js/index.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
 </body>
+
 </html>

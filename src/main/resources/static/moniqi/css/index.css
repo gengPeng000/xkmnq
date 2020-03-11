@@ -1,9 +1,147 @@
-*{
-    padding: 0;
-    margin: 0;
+body {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    min-width: 320px;
+    margin: 0 auto;
 }
 
-.choose{
+/* 1rem=16px */
+.choose {
+    position: relative;
+    height: 18.4rem;
+    margin: 2rem 0;
     width: 100%;
-    height: 520px;
+}
+
+.block {
+    position: absolute;
+}
+
+.block .image {
+    width: 4.4rem;
+    height: 4.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dedede;
+    border:1px solid rgb(196, 196, 196);
+}
+
+.block {
+    position: absolute;
+}
+
+.block-a {
+    top: 0;
+    left: calc(50% - 2.2rem)
+}
+
+.block-b {
+    top: 4rem;
+    left: 3rem;
+}
+
+.block-c {
+    top: 4rem;
+    right: 3rem
+}
+
+.block-d {
+    top: 10rem;
+    left: 3rem;
+}
+
+.block-e {
+    top: 10rem;
+    right: 3rem
+}
+
+.block-f {
+    top: 14rem;
+    left: calc(50% - 2.2rem)
+}
+
+
+.block .process {
+    position: absolute;
+    left: 1rem;
+    bottom: -1.5rem;
+    color: rgba(19, 126, 248, 0.87);
+    font-weight: 500;
+}
+
+.block .detail {
+    position: absolute;
+    right: -2rem;
+    top: 0.5rem;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+
+}
+.block .detail.right {
+    right: 0!important;
+    left:-2rem;
+}
+.block .detail>span{
+    height: 1.3rem;
+    line-height: 1.3rem;
+}
+
+
+
+
+
+.result {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 1rem 2rem;
+    border-top: 1px solid #dedede;
+}
+
+.result>div {
+    flex: 1;
+}
+
+.property,
+.buff,
+.scores {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.property .title,
+.buff .title,
+.scores .title {
+    height: 3rem;
+    line-height: 3rem;
+}
+
+.property .list,
+.buff .list,
+.scores .list {
+    width: calc(100% - 4rem);
+    padding: 0 2rem;
+}
+
+.property .item,
+.buff .item,
+.scores .item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 2rem;
+    line-height: 2rem;
+}
+
+.scores .item>div {
+    color: red;
+    font-weight: 600;
+    font-size: 1.2rem;
 }
