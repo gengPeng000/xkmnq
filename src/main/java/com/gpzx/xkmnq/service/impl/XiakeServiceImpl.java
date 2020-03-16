@@ -18,6 +18,14 @@ public class XiakeServiceImpl implements XiakeService {
     private XiakeRepostory repostory;
     @Override
     public Xiake findByNameAndLevel(String name, Integer level) {
+
         return repostory.findByNameAndLevel(name,level);
     }
+
+    @Override
+    public Xiake findByNameAndLevelAndQinmidu(String name, Integer level, int qinmidu) {
+        return repostory.findByNameAndLevelAndQinmidu(name,level,qinmidu);
+    }
+
+
 }

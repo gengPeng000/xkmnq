@@ -32,7 +32,6 @@ public class Xiake {
 
     private int kangbao;
 
-    private int fangyu;
 
     private int mingzhong;
 
@@ -40,7 +39,8 @@ public class Xiake {
 
     private int pofang;
 
-    private String jiachengxiake;
+
+    private int qinmidu;
 
     @Override
     public String toString() {
@@ -53,13 +53,22 @@ public class Xiake {
                 ", baoji=" + baoji +
                 ", gedang=" + gedang +
                 ", kangbao=" + kangbao +
-                ", fangyu=" + fangyu +
                 ", mingzhong=" + mingzhong +
                 ", shanbi=" + shanbi +
                 ", pofang=" + pofang +
-                ", jiachengxiake='" + jiachengxiake + '\'' +
+                ", qinmidu=" + qinmidu +
                 '}';
     }
+
+    public int getQinmidu() {
+        return qinmidu;
+    }
+
+    public void setQinmidu(int qinmidu) {
+        this.qinmidu = qinmidu;
+    }
+
+
 
     public Integer getId() {
         return id;
@@ -125,13 +134,6 @@ public class Xiake {
         this.kangbao = kangbao;
     }
 
-    public int getFangyu() {
-        return fangyu;
-    }
-
-    public void setFangyu(int fangyu) {
-        this.fangyu = fangyu;
-    }
 
     public int getMingzhong() {
         return mingzhong;
@@ -157,11 +159,5 @@ public class Xiake {
         this.pofang = pofang;
     }
 
-    public String getJiachengxiake() {
-        return jiachengxiake;
-    }
 
-    public void setJiachengxiake(String jiachengxiake) {
-        this.jiachengxiake = jiachengxiake;
-    }
 }
