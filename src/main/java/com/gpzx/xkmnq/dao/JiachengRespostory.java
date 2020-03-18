@@ -16,4 +16,6 @@ public interface JiachengRespostory extends JpaRepository<Jiacheng,Integer> {
     //根据主侠客查询羁绊侠客
 
     List<Jiacheng> findByZhuxiake(String zhuxiake);
+
+    List<Jiacheng> findByZhuxiakeAndQinmidu(String zhuxiake,Integer qinmidu);
 }

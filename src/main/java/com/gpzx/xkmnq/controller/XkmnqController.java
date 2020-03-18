@@ -55,7 +55,7 @@ public class XkmnqController {
        ResultVo resultVo=new ResultVo();
        ShuxingPingfenVo shuxingPingfenVo=new ShuxingPingfenVo();
        ShuXingVo shuXingVo=new ShuXingVo();
-       List<Map<String,Double>> maps = getJiacheng(xiakePos);
+       Map<String,Double> maps = getJiacheng(xiakePos);
        shuXingVo=getShuxingVo(shuXingVo,xiakePos);
        //用侠客列表xiakeList  和加成列表maps 来计算评分
        int pingfen=getPingfen(shuXingVo,maps);
@@ -160,7 +160,7 @@ public class XkmnqController {
 
 
    //评分计算
-   public int getPingfen(ShuXingVo shuXingVo,List<Map<String,Double>> maps){
+   public int getPingfen(ShuXingVo shuXingVo,Map<String,Double> map){
        int zonggongji=shuXingVo.getGongji();
        int zongqixue=shuXingVo.getQixue();
        int zongshanbi=shuXingVo.getShanbi();
@@ -169,7 +169,7 @@ public class XkmnqController {
        int zongkangbao=shuXingVo.getKangbao();
        int zongmingzhong=shuXingVo.getMingzhong();
        int zongpofang=shuXingVo.getPofang();
-       for (Map<String,Double> map:maps) {
+//       for (Map<String,Double> map:maps) {
            if(map.containsKey("攻击")){
                zonggongji+=new Double(shuXingVo.getGongji()*map.get("攻击")).intValue();
            }
@@ -194,33 +194,35 @@ public class XkmnqController {
            if(map.containsKey("破防")){
                zongpofang+=new Double(shuXingVo.getPofang()*map.get("破防")).intValue();
            }
-       }
+//       }
        int pingfen=zonggongji*5+zongqixue*1/6+(zongshanbi+zonggedang+zongbaoji+zongkangbao+zongmingzhong+zongpofang)*4;
        return pingfen;
    }
 
 
    //加成列表
-   public  List<Map<String,Double>> getJiacheng(List<XiakePo> xiakePos){
+   public  Map<String,Double> getJiacheng(List<XiakePo> xiakePos){
        List<Map<String,Double>> maps=new ArrayList<>();
        Map<String,Double> map1=new HashMap<>();
-       Map<String,Double> map2=new HashMap<>();
-       Map<String,Double> map3=new HashMap<>();
-       Map<String,Double> map4=new HashMap<>();
-       Map<String,Double> map5=new HashMap<>();
-       Map<String,Double> map6=new HashMap<>();
-       Map<String,Double> map7=new HashMap<>();
-       Map<String,Double> map8=new HashMap<>();
        List<String> jibans=new ArrayList<>();
        List<String> shuxings=new ArrayList<>();
        List<Double>  shuzhis=new ArrayList<>();
+       double sumgongji=0.0;
+       double sumqixue=0.0;
+       double sumshanbi=0.0;
+       double sumgedang=0.0;
+       double sumbaoji=0.0;
+       double sumkangbao=0.0;
+       double summingzhong=0.0;
+       double sumpofang=0.0;
+
        for (XiakePo xiakePo:xiakePos) {
            //前台传进来的六个侠客名字
            jibans.add(xiakePo.getName());
        }
        for (XiakePo xiakePo:xiakePos) {
-           //通过主侠客查询加成列表
-           List<Jiacheng> jiachengs=respostory.findByZhuxiake(xiakePo.getName());
+           //通过主侠客和亲密度查询加成列表
+           List<Jiacheng> jiachengs=respostory.findByZhuxiakeAndQinmidu(xiakePo.getName(),xiakePo.getQinmidu());
            //如果羁绊侠客在六个名字中  就取出羁绊属性来
            for (Jiacheng jiacheng:jiachengs) {
                if(jibans.contains(jiacheng.getJibanxiake())){
@@ -233,68 +235,59 @@ public class XkmnqController {
            for (int i = 0; i < shuxings.size(); i++) {
                if(shuxings.get(i).equals("攻击")){
                    double a=shuzhis.get(i);
-                   double sum=0.0;
-                   sum+=a;
-                   map1.put("攻击",sum);
+                   sumgongji+=a;
+                   map1.put("攻击",sumgongji);
                    maps.add(map1);
                }
                if(shuxings.get(i).equals("气血")){
                    double a=shuzhis.get(i);
-                   double sum=0.0;
-                   sum+=a;
-                   map2.put("气血",sum);
-                   maps.add(map2);
+                   sumqixue+=a;
+                   map1.put("气血",sumqixue);
+                   maps.add(map1);
                }
                if(shuxings.get(i).equals("闪避")){
                    double a=shuzhis.get(i);
-                   double sum=0.0;
-                   sum+=a;
-                   map3.put("闪避",sum);
-                   maps.add(map3);
+                   sumshanbi+=a;
+                   map1.put("闪避",sumshanbi);
+                   maps.add(map1);
                }
                if(shuxings.get(i).equals("格挡")){
                    double a=shuzhis.get(i);
-                   double sum=0.0;
-                   sum+=a;
-                   map4.put("格挡",sum);
-                   maps.add(map4);
+                   sumgedang+=a;
+                   map1.put("格挡",sumgedang);
+                   maps.add(map1);
                }
                if(shuxings.get(i).equals("暴击")){
                    double a=shuzhis.get(i);
-                   double sum=0.0;
-                   sum+=a;
-                   map5.put("暴击",sum);
-                   maps.add(map5);
+                   sumbaoji+=a;
+                   map1.put("暴击",sumbaoji);
+                   maps.add(map1);
                }
                if(shuxings.get(i).equals("抗暴")){
                    double a=shuzhis.get(i);
-                   double sum=0.0;
-                   sum+=a;
-                   map6.put("抗暴",sum);
-                   maps.add(map6);
+                   sumkangbao+=a;
+                   map1.put("抗暴",sumkangbao);
+                   maps.add(map1);
                }
                if(shuxings.get(i).equals("命中")){
                    double a=shuzhis.get(i);
-                   double sum=0.0;
-                   sum+=a;
-                   map7.put("命中",sum);
-                   maps.add(map7);
+                   summingzhong+=a;
+                   map1.put("命中",summingzhong);
+                   maps.add(map1);
                }
                if(shuxings.get(i).equals("破防")){
                    double a=shuzhis.get(i);
-                   double sum=0.0;
-                   sum+=a;
-                   map8.put("破防",sum);
-                   maps.add(map8);
+                   sumpofang+=a;
+                   map1.put("破防",sumpofang);
+                   maps.add(map1);
                }
        }
-
-       return maps;
+       return map1;
    }
 
 
-    @GetMapping(value = "findbiaoshi")
-    public  ResultVo getValue(int level) {
+    @GetMapping(value = "/findbiaoshi")
+    public  ResultVo getValue(Integer level) {
        ResultVo resultVo=new ResultVo();
         String value="";
         if(level<4){

@@ -15,16 +15,15 @@ public class ShuxingPingfenVo {
 
     private ShuXingVo shuXingVo;
 
-    private String jiacheng;
 
-    private List<Map<String,Double>> jiachengMaps;
+    private Map<String,Double> jiachengMap;
 
-    public List<Map<String, Double>> getJiachengMaps() {
-        return jiachengMaps;
+    public Map<String, Double> getJiachengMaps() {
+        return jiachengMap;
     }
 
-    public void setJiachengMaps(List<Map<String, Double>> jiachengMaps) {
-        this.jiachengMaps = jiachengMaps;
+    public void setJiachengMaps(Map<String, Double> jiachengMap) {
+        this.jiachengMap = jiachengMap;
     }
 
     private int pingfen;
@@ -33,7 +32,6 @@ public class ShuxingPingfenVo {
     public String toString() {
         return "ShuxingPingfenVo{" +
                 "shuXingVo=" + shuXingVo +
-                ", jiacheng='" + jiacheng + '\'' +
                 ", pingfen=" + pingfen +
                 '}';
     }
@@ -46,13 +44,6 @@ public class ShuxingPingfenVo {
         this.shuXingVo = shuXingVo;
     }
 
-    public String getJiacheng() {
-        return jiacheng;
-    }
-
-    public void setJiacheng(String jiacheng) {
-        this.jiacheng = jiacheng;
-    }
 
     public int getPingfen() {
         return pingfen;
