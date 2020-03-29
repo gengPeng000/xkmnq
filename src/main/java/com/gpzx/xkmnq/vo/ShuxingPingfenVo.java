@@ -16,14 +16,14 @@ public class ShuxingPingfenVo {
     private ShuXingVo shuXingVo;
 
 
-    private Map<String,Double> jiachengMap;
+    private Map<String,String> jiachengMaps;
 
-    public Map<String, Double> getJiachengMaps() {
-        return jiachengMap;
+    public Map<String, String> getJiachengMaps() {
+        return jiachengMaps;
     }
 
-    public void setJiachengMaps(Map<String, Double> jiachengMap) {
-        this.jiachengMap = jiachengMap;
+    public void setJiachengMaps(Map<String, String> jiachengMap) {
+        this.jiachengMaps = jiachengMap;
     }
 
     private int pingfen;

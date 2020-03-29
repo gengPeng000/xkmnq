@@ -13,5 +13,5 @@ spring:
 server:
   servlet:
     context-path: /xajh
-  port: 8081
+  port: 8082
 

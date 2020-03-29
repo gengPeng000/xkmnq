@@ -11,52 +11,95 @@
 
 <body>
     <div>请在各位置上选择侠客：</div>
+    <button style="height: 30px;width: 80px"  onclick="resert()" >重置选择</button>
     <div class="choose">
         <div class="block block-a">
-            <div class="image" onclick="choose">一号位</div>
-            <div class="process">30%</div>
+            <div class="image" id="one" onclick="choose('one')">一号位</div>
+<!--            <div class="process">30%</div>-->
             <div class="detail">
-                <span>LV1</span>
+                <span>
+                    <select name="LV1" id="oneLV" disabled style="width:3rem;" onmousedown="if(this.options.length>10){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+                    </select>
+                </span>
+                <span>
+                    <select name="LV1" id="oneQMD" disabled style="width:3.1rem;" onmousedown="if(this.options.length>10){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+                    </select>
+                </span>
                 <span>初识</span>
             </div>
         </div>
         <div class="block block-b">
-            <div class="image" onclick="choose">二号位</div>
-            <div class="process">30%</div>
-            <div class="detail right">
-                <span>LV1</span>
+            <div class="image" id="two" onclick="choose('two')">二号位</div>
+<!--            <div class="process">30%</div>-->
+            <div class="detail1">
+                <span>
+                     <select name="LV2" id="twoLV" disabled style="width:3rem;" onmousedown="if(this.options.length>10){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+                    </select>
+                </span>
+                <span>
+                    <select name="LV2" id="twoQMD" disabled style="width:3.1rem;" onmousedown="if(this.options.length>10){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+                    </select>
+                </span>
                 <span>初识</span>
             </div>
         </div>
         <div class="block block-c">
-            <div class="image" onclick="choose">四号位</div>
-            <div class="process">30%</div>
+            <div class="image" id="four" onclick="choose('four')">四号位</div>
+<!--            <div class="process">30%</div>-->
             <div class="detail">
-                <span>LV1</span>
+                <span>
+                     <select name="LV4" id="fourLV" disabled style="width:3rem;" onmousedown="if(this.options.length>10){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+                    </select>
+                </span>
+                <span>
+                     <select name="LV4" id="fourQMD" disabled style="width:3.1rem;" onmousedown="if(this.options.length>10){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+                    </select>
+                </span>
                 <span>初识</span>
             </div>
         </div>
         <div class="block block-d">
-            <div class="image" onclick="choose">三号位</div>
-            <div class="process">30%</div>
-            <div class="detail right">
-                <span>LV1</span>
+            <div class="image" id="three" onclick="choose('three')">三号位</div>
+<!--            <div class="process">30%</div>-->
+            <div class="detail1">
+                <span>
+                    <select name="LV3" id="threeLV" disabled style="width:3rem;" onmousedown="if(this.options.length>10){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+                    </select>
+                </span>
+                <span>
+                    <select name="LV3" id="threeQMD" disabled style="width:3.1rem;" onmousedown="if(this.options.length>10){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+                    </select>
+                </span>
                 <span>初识</span>
             </div>
         </div>
         <div class="block block-e">
-            <div class="image" onclick="choose">五号位</div>
-            <div class="process">30%</div>
+            <div class="image" id="five" onclick="choose('five')">五号位</div>
+<!--            <div class="process">30%</div>-->
             <div class="detail">
-                <span>LV1</span>
+                <span>
+                    <select name="LV5" id="fiveLV" disabled style="width:3rem;" onmousedown="if(this.options.length>10){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+                    </select>
+                </span>
+                <span>
+                    <select name="LV5" id="fiveQMD" disabled style="width:3.1rem;" onmousedown="if(this.options.length>10){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+                    </select>
+                </span>
                 <span>初识</span>
             </div>
         </div>
         <div class="block block-f">
-            <div class="image" onclick="choose">六号位</div>
-            <div class="process">30%</div>
+            <div class="image" id="six" onclick="choose('six')" >六号位</div>
+<!--            <div class="process">30%</div>-->
             <div class="detail">
-                <span>LV1</span>
+                <span>
+                    <select name="LV6" id="sixLV" disabled style="width:3rem;" onmousedown="if(this.options.length>10){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+                    </select>
+                </span>
+                <span>
+                    <select name="LV6" id="sixQMD" disabled style="width:3.1rem;" onmousedown="if(this.options.length>10){this.size=5}" onblur="this.size=1" onchange="this.size=1">
+                    </select>
+                </span>
                 <span>初识</span>
             </div>
         </div>
@@ -66,41 +109,38 @@
             <div class="title">
                 属性：
             </div>
-            <div class="list">
+            <div class="list1">
                 <div class="item">
                     <div class="item-title">气血：</div>
-                    <div class="item-value">8392</div>
+                    <div class="item-value"></div>
                 </div>
                 <div class="item">
                     <div class="item-title">攻击：</div>
-                    <div class="item-value">391</div>
+                    <div class="item-value"></div>
                 </div>
                 <div class="item">
                     <div class="item-title">命中：</div>
-                    <div class="item-value">239</div>
+                    <div class="item-value"></div>
                 </div>
                 <div class="item">
                     <div class="item-title">暴击：</div>
-                    <div class="item-value">192</div>
+                    <div class="item-value"></div>
                 </div>
                 <div class="item">
                     <div class="item-title">格挡：</div>
-                    <div class="item-value">203</div>
+                    <div class="item-value"></div>
                 </div>
 
             </div>
         </div>
         <div>
             <div class="buff">
-                <div class="title">
-                    侠缘加成：
+                <br/>
+                <div class="title1">
+
                 </div>
-                <div class="list">
+                <div class="list2">
                     <div class="item">
-                        <div>20%暴击</div>
-                    </div>
-                    <div class="item">
-                        <div>20%暴击</div>
                     </div>
                 </div>
             </div>
@@ -108,19 +148,20 @@
                 <div class="title">
                     评分：
                 </div>
-                <div class="list">
+                <div class="list3">
                     <div class="item">
-                        <div>5342</div>
+                        <div></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="dibu" style="text-align: center"><span style="font-size: 7px;align-content: center;color: navy">--技术支持：大嘴巴技术组--</span></div>
 
 
-
-    <script src="../js/index.js"></script>
     <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/index.js"></script>
+
 </body>
 
 </html>
