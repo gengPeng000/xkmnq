@@ -284,21 +284,6 @@ public class XkmnqController {
        map1.put("pofang",sumgongji+"");
        map1.put("mingzhong",sumgongji+"");
 
-       List<XiakeDto> xiakeDtos=new ArrayList<>();
-       for (XiakePo xiakePo:xiakePos) {
-           XiakeDto xiakeDto=new XiakeDto();
-           List<String> jibanList=new ArrayList<>();
-           //前台传进来的六个侠客名字
-           jibans.add(xiakePo.getName());
-           List<Jiacheng> jiachengs=respostory.findByZhuxiakeAndQinmidu(xiakePo.getName(),convert(xiakePo.getQinmidu()));
-           for (Jiacheng jiacheng:jiachengs ) {
-               jibanList.add(jiacheng.getJibanxiake());
-           }
-           xiakeDto.setName(xiakePo.getName());
-           xiakeDto.setQinmidu(convert(xiakePo.getQinmidu()));
-           xiakeDto.setJibanList(jibanList);
-           xiakeDtos.add(xiakeDto);
-       }
 
 //       boolean flag1=false;
 //       boolean flag2=false;
@@ -335,7 +320,21 @@ public class XkmnqController {
 //           }
 //       }
 
-
+       List<XiakeDto> xiakeDtos=new ArrayList<>();
+       for (XiakePo xiakePo:xiakePos) {
+           XiakeDto xiakeDto=new XiakeDto();
+           List<String> jibanList=new ArrayList<>();
+           //前台传进来的六个侠客名字
+           jibans.add(xiakePo.getName());
+           List<Jiacheng> jiachengs=respostory.findByZhuxiakeAndQinmidu(xiakePo.getName(),convert(xiakePo.getQinmidu()));
+           for (Jiacheng jiacheng:jiachengs ) {
+               jibanList.add(jiacheng.getJibanxiake());
+           }
+           xiakeDto.setName(xiakePo.getName());
+           xiakeDto.setQinmidu(convert(xiakePo.getQinmidu()));
+           xiakeDto.setJibanList(jibanList);
+           xiakeDtos.add(xiakeDto);
+       }
 
        for (XiakeDto xiakeDto:xiakeDtos) {
                //通过主侠客和亲密度查询加成列表
@@ -354,18 +353,6 @@ public class XkmnqController {
                        }
                    }
                }
-
-//               //通过主侠客和亲密度查询加成列表
-//               List<Jiacheng> jiachengs = respostory.findByZhuxiakeAndQinmidu(xiakePo.getName(), convert(xiakePo.getQinmidu()));
-//               //如果羁绊侠客在六个名字中  就取出羁绊属性来   20200323  如果令狐冲和大侠令狐冲都在xiakePos中  取值较大的那个
-//               for (Jiacheng jiacheng : jiachengs) {
-//                   if (jibans.contains(jiacheng.getJibanxiake())) {
-//                       shuxings.add(jiacheng.getJiachengshuxing());
-//                       shuzhis.add(Double.valueOf(jiacheng.getJiachengshuzhi()));
-//                   }
-//               }
-
-
        }
        //羁绊属性相同的  对应数值相加
            for (int i = 0; i < shuxings.size(); i++) {
@@ -476,21 +463,57 @@ public class XkmnqController {
         map1.put("mingzhong",sumgongji);
 
 
+//        for (XiakePo xiakePo:xiakePos) {
+//            //前台传进来的六个侠客名字
+//            jibans.add(xiakePo.getName());
+//        }
+//        for (XiakePo xiakePo:xiakePos) {
+//            //通过主侠客和亲密度查询加成列表
+//            List<Jiacheng> jiachengs=respostory.findByZhuxiakeAndQinmidu(xiakePo.getName(),convert(xiakePo.getQinmidu()));
+//            //如果羁绊侠客在六个名字中  就取出羁绊属性来
+//            for (Jiacheng jiacheng:jiachengs) {
+//                if(jibans.contains(jiacheng.getJibanxiake())){
+//                    shuxings.add(jiacheng.getJiachengshuxing());
+//                    shuzhis.add(Double.valueOf(jiacheng.getJiachengshuzhi()));
+//                }
+//            }
+//        }
+
+        List<XiakeDto> xiakeDtos=new ArrayList<>();
         for (XiakePo xiakePo:xiakePos) {
+            XiakeDto xiakeDto=new XiakeDto();
+            List<String> jibanList=new ArrayList<>();
             //前台传进来的六个侠客名字
             jibans.add(xiakePo.getName());
-        }
-        for (XiakePo xiakePo:xiakePos) {
-            //通过主侠客和亲密度查询加成列表
             List<Jiacheng> jiachengs=respostory.findByZhuxiakeAndQinmidu(xiakePo.getName(),convert(xiakePo.getQinmidu()));
-            //如果羁绊侠客在六个名字中  就取出羁绊属性来
-            for (Jiacheng jiacheng:jiachengs) {
-                if(jibans.contains(jiacheng.getJibanxiake())){
+            for (Jiacheng jiacheng:jiachengs ) {
+                jibanList.add(jiacheng.getJibanxiake());
+            }
+            xiakeDto.setName(xiakePo.getName());
+            xiakeDto.setQinmidu(convert(xiakePo.getQinmidu()));
+            xiakeDto.setJibanList(jibanList);
+            xiakeDtos.add(xiakeDto);
+        }
+
+        for (XiakeDto xiakeDto:xiakeDtos) {
+            //通过主侠客和亲密度查询加成列表
+            Jiacheng jiacheng=respostory.findByZhuxiakeAndJibanxiakeAndQinmidu(xiakeDto.getName(),xiakeDto.getJibanList().get(0),xiakeDto.getQinmidu());
+            if(("东方不败".equals(xiakeDto.getName())&&jibans.contains("令狐冲")&&jibans.contains("大侠令狐冲"))||("风清扬".equals(xiakeDto.getName())&&jibans.contains("令狐冲")&&jibans.contains("大侠令狐冲"))){
+                if(jibans.contains(xiakeDto.getJibanList().get(0))){
                     shuxings.add(jiacheng.getJiachengshuxing());
                     shuzhis.add(Double.valueOf(jiacheng.getJiachengshuzhi()));
                 }
+            }else {
+                //如果羁绊侠客在六个名字中  就取出羁绊属性来
+                for (String jibanxiake : xiakeDto.getJibanList()) {
+                    if (jibans.contains(jibanxiake)) {
+                        shuxings.add(jiacheng.getJiachengshuxing());
+                        shuzhis.add(Double.valueOf(jiacheng.getJiachengshuzhi()));
+                    }
+                }
             }
         }
+
         //羁绊属性相同的  对应数值相加
         for (int i = 0; i < shuxings.size(); i++) {
             if(shuxings.get(i).equals("攻击")){
