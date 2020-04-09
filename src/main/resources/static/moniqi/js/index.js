@@ -1,4 +1,13 @@
+window.onload=function(){
+    if(window.location.pathname.indexOf('tanchuang')>-1){
+    }else{
+        if(window.location.search==''){
+            loadAnimation();
+        }
+    }
+}
 $(function () {
+    // document.getElementById("loadA").className = "load-animation";
     /* 添加亲密等级 */
     LV()
     /* 亲密的等级 */
@@ -10,6 +19,12 @@ $(function () {
     /* 等级选择事件触发 */
     lvChange()
 })
+function loadAnimation(){
+    document.getElementById("loadA").className = "load-animation";
+    setTimeout(()=>{
+        document.getElementById("loadA").className = "hide-animation";
+    },1000)
+}
 /* 点击号位跳转到角色选择页面 */
 function choose(id) {
     sessionStorage.setItem('id', id);
@@ -18,12 +33,11 @@ function choose(id) {
 
 //重置
 function resert(){
-    window.location.href ="index.html";
+    window.location.href ="index.html?type=resert";
 }
 
 /* 点击弹框的觉色获取角色的名称 */
 function jsCLick(name) {
-    console.log(name)
     var id = sessionStorage.getItem('id'); // 获取前个页面点击的号位
     var array = JSON.parse(sessionStorage.getItem('array'));
     var array1 = JSON.parse(JSON.stringify(array))
